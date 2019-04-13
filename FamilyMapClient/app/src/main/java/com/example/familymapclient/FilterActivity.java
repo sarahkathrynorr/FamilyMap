@@ -1,18 +1,10 @@
 package com.example.familymapclient;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Display;
 import android.view.MenuItem;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import src.Model.Person;
-
 public class FilterActivity extends SingleFragmentActivity {
-    private ArrayList<String> eventTypes;
     FilterListFragment filterListFragment;
 
 

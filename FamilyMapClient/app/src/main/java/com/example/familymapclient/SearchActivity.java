@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -40,100 +39,86 @@ public class SearchActivity extends AppCompatActivity {
     private Drawable locationIcon;
 
 
-    //@Override
-//    protected Fragment createFragment() {
+    @Override //Unless previously overridden
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
 
-        @Override //Unless previously overridden
-        protected void onCreate (Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_search);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            authToken = (String) bundle.getCharSequence("AuthToken");
+            serverHost = (String) bundle.getCharSequence("ServerHost");
+            serverPort = (String) bundle.getCharSequence("ServerPort");
+        }
 
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            if (bundle != null) {
-                authToken = (String) bundle.getCharSequence("AuthToken");
-                serverHost = (String) bundle.getCharSequence("ServerHost");
-                serverPort = (String) bundle.getCharSequence("ServerPort");
+        allPersons = (AllPersons) getIntent().getSerializableExtra("allPersons");
+        allEvents = (AllEvents) getIntent().getSerializableExtra("allEvents");
+
+        searchView = (SearchView) findViewById(R.id.search_view); // initiate a search view
+
+        maleIcon = new IconDrawable(this, FontAwesomeIcons.fa_male).colorRes(R.color.orange).sizeDp(20);
+        femaleIcon = new IconDrawable(this, FontAwesomeIcons.fa_female).colorRes(R.color.purple).sizeDp(20);
+        locationIcon = new IconDrawable(this, FontAwesomeIcons.fa_map_marker).colorRes(R.color.colorAccent).sizeDp(20);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query != null) {
+
+                    updateSearchFilter(query, allEvents, allPersons); //questionable
+                    //searchView.setQuery("", false);
+                    //searchView.clearFocus();
+
+                } else {
+                    searchView.setQuery("", false);
+                    searchView.clearFocus();
+                    updateSearchFilter(query, allEvents, allPersons); //questionable
+
+                }
+                return false;
             }
 
-            allPersons = (AllPersons) getIntent().getSerializableExtra("allPersons");
-            allEvents = (AllEvents) getIntent().getSerializableExtra("allEvents");
-
-            searchView = (SearchView) findViewById(R.id.search_view); // initiate a search view
-
-            maleIcon = new IconDrawable(this, FontAwesomeIcons.fa_male).colorRes(R.color.orange).sizeDp(20);
-            femaleIcon = new IconDrawable(this, FontAwesomeIcons.fa_female).colorRes(R.color.purple).sizeDp(20);
-            locationIcon = new IconDrawable(this, FontAwesomeIcons.fa_map_marker).colorRes(R.color.colorAccent).sizeDp(20);
-
-
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    if (query != null) {
-
-                        updateSearchFilter(query, allEvents, allPersons); //questionable
-                        //searchView.setQuery("", false);
-                        //searchView.clearFocus();
-
-                    }
-                    else {
-                        searchView.setQuery("", false);
-                        searchView.clearFocus();
-                        updateSearchFilter(query, allEvents, allPersons); //questionable
-
-                    }
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
+            @Override
+            public boolean onQueryTextChange(String newText) {
                 if (newText != null) {
 
                     updateSearchFilter(newText, allEvents, allPersons);
                 }
-                    return false;
+                return false;
+            }
+        });
+
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    //searchView.collapseActionView();
+                    updateSearchFilter("", allEvents, allPersons);
                 }
-            });
+            }
+        });
 
-            searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) {
-                        //searchView.collapseActionView();
-                        updateSearchFilter("", allEvents, allPersons);
-                    }
-                }
-            });
-
-            //CharSequence query = searchView.getQuery();
-            //updateSearchFilter((String) query);
+        //CharSequence query = searchView.getQuery();
+        //updateSearchFilter((String) query);
 
 
-            //This comment is unnecessary, but will be left here until removed. #youneverknowwhodiditunlessyouremembered
-            //return setFragment();
-            //setFragment();
-        }
+        //This comment is unnecessary, but will be left here until removed. #youneverknowwhodiditunlessyouremembered
+        //return setFragment();
+        //setFragment();
+    }
     //}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP |
                     Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
         return true;
-    }
-
-    private void setFragment() {
-        //set the view
-        RecyclerView mResultRecyclerView = findViewById(R.id.search_activity)
-                .findViewById(R.id.search_recycler_list);
-        mResultRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        SearchAdapter searchAdapter = new SearchAdapter(searchResults);
-        mResultRecyclerView.setAdapter(searchAdapter);
     }
 
     public void searchEvents(String query, AllEvents allEvents, ArrayList<Object> searchResults) {
@@ -191,7 +176,7 @@ public class SearchActivity extends AppCompatActivity {
     private class SearchHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
-            private final TextView mTitleTextView;
+        private final TextView mTitleTextView;
         private final TextView mDescriptionTextView;
         private Object mResult;
         //private final ImageView icon;
@@ -265,7 +250,7 @@ public class SearchActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-                });
+            });
         }
 
         @Override

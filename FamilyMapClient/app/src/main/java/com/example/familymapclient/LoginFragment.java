@@ -37,7 +37,6 @@ public class LoginFragment extends Fragment {
     private EditText firstNameListener;
     private EditText lastNameListener;
     private EditText emailListener;
-    private RadioButton genderButton;
 
     private View v;
     
@@ -342,7 +341,6 @@ public class LoginFragment extends Fragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
-            //TODO change to textEdit variables **** instead of findViewById
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!(((userNameTextEdit.getText().toString()).equals("")
