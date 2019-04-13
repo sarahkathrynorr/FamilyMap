@@ -1,0 +1,38 @@
+CREATE TABLE if not exists "User" (
+	"Username"	TEXT NOT NULL UNIQUE PRIMARY KEY,
+	"Password"	TEXT NOT NULL,
+	"Email"	TEXT NOT NULL UNIQUE,
+	"FirstName"	TEXT NOT NULL,
+	"LastName"	TEXT NOT NULL,
+	"Gender"	TEXT NOT NULL,
+	"PersonID"	TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE if not exists "Person" (
+	"PersonID"	TEXT NOT NULL PRIMARY KEY UNIQUE,
+	"Descendant"	TEXT,
+	"FirstName"	TEXT NOT NULL,
+	"LastName"	TEXT NOT NULL,
+	"Gender"	TEXT NOT NULL,
+	"Mother"	TEXT,
+	"Father"	TEXT,
+	"Spouse"	TEXT
+);
+
+CREATE TABLE if not exists "Events" (
+	"EventId"	TEXT NOT NULL PRIMARY KEY UNIQUE,
+	"Descendant"	TEXT,
+	"PersonID"	TEXT,
+	"Latitude"	TEXT,
+	"Longitude"	TEXT,
+	"Country"	TEXT,
+	"City"	TEXT,
+	"EventType"	TEXT,
+	"Year" INTEGER
+);
+
+CREATE TABLE if not exists "AuthToken" (
+	"Auth_token" TEXT PRIMARY KEY UNIQUE,
+	"Username" TEXT,
+	"PersonID" TEXT
+);

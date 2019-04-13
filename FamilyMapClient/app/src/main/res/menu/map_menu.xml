@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--&gt;-->
+            <!--<item-->
+                <!--android:title=""-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight=".55"-->
+                <!--&gt;-->
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:textSize="27sp"-->
+                    <!--android:text="@string/family_map"-->
+                    <!--android:textColor="@color/white" />-->
+            <!--</item>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight=".15">-->
+                <item
+                    android:title="@+id/searchButton"
+                    android:id="@+id/searchButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight=".15">-->
+                <item
+                    android:id="@+id/filterButton"
+                    android:title="@+id/filterButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true" />
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight=".15">-->
+                <item
+                    android:id="@+id/settingsButton"
+                    android:title="@+id/settingsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:focusable="true" />
+            <!--</LinearLayout>-->
+
+        <!--</LinearLayout>-->
+</menu>

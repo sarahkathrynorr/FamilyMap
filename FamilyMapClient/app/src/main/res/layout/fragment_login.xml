@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <!--or is it /.LoginFragment?-->
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="3">
+        <TableRow
+            android:id="@+id/ServerHost">
+            <TextView
+                android:id="@+id/ServerHostTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/ServerHost"
+                app:layout_constraintLeft_toLeftOf="@id/ServerHostText" />
+
+            <EditText
+                android:id="@+id/ServerHostText"
+                android:text="@string/tempHost"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                app:layout_constraintRight_toRightOf="@id/ServerHostTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/ServerPort">
+            <TextView
+                android:id="@+id/ServerPortTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/ServerPort"
+                app:layout_constraintLeft_toLeftOf="@id/ServerPortText" />
+
+            <EditText
+                android:id="@+id/ServerPortText"
+                android:text="@string/tempPort"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tempPort"
+                android:layout_span="3"
+                android:textEditSuggestionItemLayout="@string/tempPort"
+                app:layout_constraintRight_toRightOf="@id/ServerPortTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/UserName">
+            <TextView
+                android:id="@+id/UserNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/UserName"
+                app:layout_constraintLeft_toLeftOf="@id/UserNameText" />
+
+            <EditText
+                android:id="@+id/UserNameText"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                app:layout_constraintRight_toRightOf="@id/UserNameTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/Password">
+            <TextView
+                android:id="@+id/PasswordTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/Password"
+                app:layout_constraintLeft_toLeftOf="@id/PasswordText" />
+
+            <EditText
+                android:id="@+id/PasswordText"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                app:layout_constraintRight_toRightOf="@id/PasswordTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/FirstName">
+
+            <TextView
+                android:id="@+id/FirstNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/FirstName"
+                app:layout_constraintLeft_toLeftOf="@id/FirstNameText" />
+
+            <EditText
+                android:id="@+id/FirstNameText"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                app:layout_constraintRight_toRightOf="@id/FirstNameTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/LastName">
+
+            <TextView
+                android:id="@+id/LastNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/LastName"
+                app:layout_constraintLeft_toLeftOf="@id/LastNameText" />
+
+            <EditText
+                android:id="@+id/LastNameText"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                app:layout_constraintRight_toRightOf="@id/LastNameTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/Email">
+
+            <TextView
+                android:id="@+id/EmailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="24dp"
+                android:gravity="end"
+                android:text="@string/Email"
+                app:layout_constraintLeft_toLeftOf="@id/EmailText" />
+
+            <EditText
+                android:id="@+id/EmailText"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+                app:layout_constraintRight_toRightOf="@id/EmailTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/GenderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="end"
+                android:padding="24dp"
+                android:text="@string/Gender" />
+
+            <RadioGroup
+                android:id="@+id/Gender"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <RadioButton
+                    android:id="@+id/Female"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toLeftOf="@id/Male"
+                    android:text="@string/Female"/>
+
+                <RadioButton
+                    android:id="@+id/Male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/Female"
+                    android:text="@string/Male"/>
+
+            </RadioGroup>
+
+        </TableRow>
+
+        <LinearLayout
+            android:id="@+id/Buttons"
+            android:layout_marginTop="18dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:layout_margin="4dp"
+                android:id="@+id/SignInButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/SignIn"/>
+
+            <Button
+                android:layout_margin="4dp"
+                android:id="@+id/RegisterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Register"/>
+        </LinearLayout>
+    </TableLayout>
+</ScrollView>
+
+<android.support.constraint.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="889dp" />
+
+
+</LinearLayout>

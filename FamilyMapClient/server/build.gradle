@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':shared')
+    implementation files('src/main/java/Jar/sqlite-jdbc-3.7.2.jar')
+    implementation files('src/main/java/Jar/json-20160212.jar')
+    implementation files('src/main/java/Jar/gson-2.6.2.jar')
+    implementation files('src/main/java/Jar/JUnit4/junit-4.12.jar')
+    implementation files('src/main/java/Jar/JUnit4/hamcrest-core-1.3.jar')
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

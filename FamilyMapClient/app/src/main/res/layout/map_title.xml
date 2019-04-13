@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="horizontal"
+    >
+
+    <Button
+        android:title="@+id/searchButton"
+        android:id="@+id/searchButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <Button
+        android:id="@+id/filterButton"
+        android:title="@+id/filterButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:title="@+id/settingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:background="@color/colorPrimary"
+        android:clickable="true"/>
+
+</RelativeLayout>
